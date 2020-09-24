@@ -1,22 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const date = require(__dirname + "/date.js");
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("public"))
 app.set("view engine", "ejs")
 
 const todoList = [];
 
 app.get("/", (req, res) => {
-    const options = {
-        weekday: "long",
-        day: "numeric",
-        month: "long"
-    };
-    const today = new Date();
-    const day = today.toLocaleDateString("en-EU", options);
-
-    res.render("list", {isWeekend: isWeekend(today.getDay()), weekDay: day, todoList: todoList});
+    
+    res.render("list", {weekDay: date.getDate(), todoList: todoList});
 })
 
 app.post("/", (req, res) => {

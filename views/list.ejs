@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List</title>
-</head>
-<body>
-    <h1>It's a <%= weekDay %></h1>
+<%- include("header") %>
+    <div class="box" id="heading">
+        <h1>It's a <%= weekDay %></h1>
+    </div>
 
-    <ul>
+    <div class="box">
         <% for (let item of todoList) { %>
-         <li><%= item %></li>
+            <div class="item">
+                <input type="checkbox">
+                <p><%= item %></p>
+            </div>
         <% } %>
-    </ul>
 
-    <form action="/" method="POST">
-        <input type="text" name="todoItem">
-        <button type="submit">Add</button>
-    </form>
+        <form action="/" method="POST" class="item">
+            <input type="text" name="todoItem" placeholder="Add..." autocomplete="off">
+            <button type="submit">+</button>
+        </form>
+    </div>
 </body>
 </html>
