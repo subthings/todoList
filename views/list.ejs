@@ -5,10 +5,12 @@
 
     <div class="box">
         <% for (let item of todoList) { %>
-            <div class="item">
-                <input type="checkbox">
-                <p><%= item %></p>
-            </div>
+            <form action="/delete", method="POST">
+                <div class="item">
+                    <input type="checkbox" onChange="this.form.submit()" name="deleteItem" value="<%=item._id%>">
+                    <p><%= item.name %></p>
+                </div>
+            </form>
         <% } %>
 
         <form action="/" method="POST" class="item">
